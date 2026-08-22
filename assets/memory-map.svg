@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 700" font-family="Consolas, monospace">
+  <!-- 标题 -->
+  <text x="325" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#333">C++ 进程虚拟内存分布图</text>
+
+  <!-- 高地址标记 -->
+  <text x="325" y="56" text-anchor="middle" font-size="12" fill="#888">高地址 (0x7FFFFFFF...)</text>
+
+  <!-- 命令行参数 + 环境变量 -->
+  <rect x="50" y="70" width="550" height="36" rx="4" fill="#E8EAF6" stroke="#5C6BC0" stroke-width="1.5"/>
+  <text x="325" y="93" text-anchor="middle" font-size="12" fill="#283593">命令行参数 &amp; 环境变量</text>
+
+  <!-- 向下箭头 -->
+  <line x1="600" y1="106" x2="600" y2="130" stroke="#888" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <polygon points="595,130 600,138 605,130" fill="#888"/>
+
+  <!-- 栈 Stack -->
+  <rect x="50" y="140" width="550" height="100" rx="4" fill="#FFEBEE" stroke="#E53935" stroke-width="1.5"/>
+  <text x="325" y="162" text-anchor="middle" font-size="13" font-weight="bold" fill="#C62828">栈 Stack</text>
+  <text x="325" y="182" text-anchor="middle" font-size="11" fill="#C62828">局部变量、函数参数、返回地址</text>
+  <text x="325" y="200" text-anchor="middle" font-size="11" fill="#E53935">← 高地址向低地址增长 ↓</text>
+  <text x="325" y="218" text-anchor="middle" font-size="10" fill="#888">默认大小: Linux 8MB, Windows 1MB</text>
+
+  <!-- 堆栈之间的空隙 -->
+  <rect x="300" y="248" width="50" height="26" rx="2" fill="#FFF8E1" stroke="#FFB300" stroke-width="1"/>
+  <text x="325" y="265" text-anchor="middle" font-size="9" fill="#E65100">空闲</text>
+
+  <!-- 向上箭头 -->
+  <line x1="60" y1="274" x2="60" y2="298" stroke="#888" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <polygon points="55,298 60,306 65,298" fill="#888"/>
+
+  <!-- 堆 Heap -->
+  <rect x="50" y="300" width="550" height="100" rx="4" fill="#FFF3E0" stroke="#FF9800" stroke-width="1.5"/>
+  <text x="325" y="322" text-anchor="middle" font-size="13" font-weight="bold" fill="#E65100">堆 Heap</text>
+  <text x="325" y="342" text-anchor="middle" font-size="11" fill="#E65100">动态分配: new / malloc</text>
+  <text x="325" y="360" text-anchor="middle" font-size="11" fill="#FF9800">→ 低地址向高地址增长 ↑</text>
+  <text x="325" y="378" text-anchor="middle" font-size="10" fill="#888">大小受物理内存 + 交换空间限制</text>
+
+  <!-- BSS 段 -->
+  <rect x="50" y="408" width="550" height="55" rx="4" fill="#E8F5E9" stroke="#43A047" stroke-width="1.5"/>
+  <text x="325" y="430" text-anchor="middle" font-size="13" font-weight="bold" fill="#2E7D32">BSS 段（未初始化数据）</text>
+  <text x="325" y="450" text-anchor="middle" font-size="11" fill="#388E3C">未初始化的全局/静态变量 (自动初始化为 0)</text>
+
+  <!-- Data 段 -->
+  <rect x="50" y="470" width="550" height="55" rx="4" fill="#C8E6C9" stroke="#43A047" stroke-width="1.5"/>
+  <text x="325" y="492" text-anchor="middle" font-size="13" font-weight="bold" fill="#2E7D32">Data 段（已初始化数据）</text>
+  <text x="325" y="512" text-anchor="middle" font-size="11" fill="#388E3C">已初始化且初值非 0 的全局/静态变量</text>
+
+  <!-- 常量区 -->
+  <rect x="50" y="532" width="550" height="55" rx="4" fill="#E0E0E0" stroke="#757575" stroke-width="1.5"/>
+  <text x="325" y="554" text-anchor="middle" font-size="13" font-weight="bold" fill="#424242">常量区 .rodata（只读）</text>
+  <text x="325" y="574" text-anchor="middle" font-size="11" fill="#616161">字符串字面量 "hello"、const 全局变量</text>
+
+  <!-- 代码段 -->
+  <rect x="50" y="594" width="550" height="55" rx="4" fill="#E3F2FD" stroke="#1E88E5" stroke-width="1.5"/>
+  <text x="325" y="616" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565C0">代码段 .text（只读可执行）</text>
+  <text x="325" y="636" text-anchor="middle" font-size="11" fill="#1976D2">编译后的二进制指令（多进程可共享）</text>
+
+  <!-- 低地址标记 -->
+  <text x="325" y="672" text-anchor="middle" font-size="12" fill="#888">低地址 (0x00000000)</text>
+
+  <!-- 右侧标注示例 -->
+  <text x="50" y="700" font-size="10" fill="#666">示例: int g_init = 10 → Data 段 | int g_uninit → BSS 段 | int* p = new int(42) → 堆 | int x = 10 → 栈 | "hello" → 常量区</text>
+</svg>

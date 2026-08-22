@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# 使用 GitHub Pages 默认地址时可直接生效；换成自定义域名后请同步替换。
+Sitemap: https://lzh1617055800.github.io/liu-portfolio/sitemap.xml

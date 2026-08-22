@@ -1,0 +1,11 @@
+{
+  "name": "刘倬滈 / C++ · Qt · Linux",
+  "short_name": "刘倬滈",
+  "description": "刘倬滈的工程作品集：C++、Qt、Linux、汽车软件与桌面工具。",
+  "lang": "zh-CN",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#111213",
+  "theme_color": "#111213"
+}
