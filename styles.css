@@ -41,19 +41,20 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--blue); outline-
 
 .section-wrap { width: min(1180px, calc(100% - 48px)); margin: 0 auto; }
 .topbar { position: sticky; top: 12px; z-index: 10; width: min(1240px, calc(100% - 32px)); margin: 12px auto 0; border: 1px solid rgba(255, 255, 255, 0.18); border-radius: 18px; background: rgba(24, 25, 27, 0.58); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.32); backdrop-filter: blur(24px) saturate(1.3); -webkit-backdrop-filter: blur(24px) saturate(1.3); }
-.topbar-inner { display: grid; grid-template-columns: 230px minmax(360px, 1fr) auto; align-items: center; min-height: 116px; gap: 36px; padding: 0 28px; }
+.topbar-inner { display: grid; grid-template-columns: 230px minmax(0, 1fr) auto; align-items: center; min-height: 136px; gap: 30px; padding: 0 28px; }
 .wordmark { display: inline-flex; align-items: center; gap: 14px; flex: 0 0 auto; }
 .wordmark-mark { display: grid; place-items: center; width: 44px; height: 44px; color: #111213; background: var(--ink); border-radius: 9px; font-family: var(--font-mono); font-size: 13px; font-weight: 700; letter-spacing: -0.08em; }
 .wordmark-copy { display: grid; gap: 0; line-height: 1; }
 .wordmark-copy strong { font-size: 20px; letter-spacing: 0.02em; }
 .wordmark-copy small { margin-top: 7px; color: var(--muted); font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.04em; }
-.header-profile { display: grid; gap: 8px; margin-left: 0; color: var(--muted); white-space: nowrap; }
-.header-profile-main { display: grid; gap: 2px; }
-.header-profile-label { color: var(--blue); font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.14em; }
-.header-profile-main strong { color: var(--ink); font-size: 17px; letter-spacing: -0.015em; }
-.header-profile-main > span:not(.header-profile-label) { font-family: var(--font-mono); font-size: 12px; }
-.header-profile-stack { padding-left: 0; color: var(--blue); font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.04em; }
-.header-profile-awards { max-width: 560px; color: #c1c0bc; font-family: var(--font-mono); font-size: 10px; line-height: 1.45; letter-spacing: 0.01em; white-space: normal; }
+.header-profile { display: grid; gap: 7px; margin-left: 0; color: var(--muted); white-space: nowrap; }
+.header-profile-main { display: grid; gap: 3px; }
+.header-profile-label { color: var(--blue); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; }
+.header-profile-main strong { color: var(--ink); font-size: 21px; letter-spacing: -0.02em; line-height: 1.15; }
+.header-profile-main > span:not(.header-profile-label) { font-family: var(--font-mono); font-size: 13px; line-height: 1.45; }
+.header-profile-stack { padding-left: 0; color: var(--blue); font-family: var(--font-mono); font-size: 13px; line-height: 1.45; letter-spacing: 0.04em; }
+.header-profile-awards { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 9px; max-width: 560px; color: #d0ceca; font-family: var(--font-mono); font-size: 12px; line-height: 1.5; letter-spacing: 0.01em; white-space: normal; }
+.header-profile-awards b { color: var(--blue); font-size: 10px; font-weight: 600; letter-spacing: 0.08em; }
 .header-actions { display: grid; justify-items: end; gap: 14px; }
 .header-contact { display: flex; align-items: center; gap: 18px; margin-left: 0; color: var(--muted); font-family: var(--font-mono); font-size: 12px; white-space: nowrap; }
 .header-contact a { transition: color 180ms ease; }
@@ -236,7 +237,7 @@ h1 em, .closing h2 em { color: var(--blue); font-style: normal; }
   .mobile-nav.is-open { max-height: 260px; padding-top: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
   .mobile-profile { display: grid; grid-column: 1 / -1; gap: 1px; padding: 2px 3px 7px; }
   .mobile-profile strong { font-size: 14px; }
-  .mobile-profile span { color: var(--muted); font-family: var(--font-mono); font-size: 10px; }
+  .mobile-profile span { color: var(--muted); font-family: var(--font-mono); font-size: 10px; line-height: 1.5; }
   .mobile-nav a { padding: 10px 11px; border: 1px solid var(--line); border-radius: 9px; background: rgba(255, 255, 255, 0.075); color: var(--muted); font-size: 13px; }
   .hero { grid-template-columns: 1fr; min-height: auto; gap: 54px; padding-top: 80px; padding-bottom: 72px; }
   .hero h1 { font-size: clamp(46px, 12vw, 72px); }
