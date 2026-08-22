@@ -145,6 +145,45 @@ if (loopSteps.length > 1) {
   if (!prefersReducedMotion) window.setInterval(advanceLoop, 1600);
 }
 
+// The toolchain is a real marquee rather than a CSS snapshot: the track moves
+// on every frame, loops at exactly one sequence width, and pauses for inspection.
+const stackMarquee = document.querySelector(".stack-marquee");
+const stackMarqueeTrack = stackMarquee?.querySelector(".stack-marquee-track");
+if (stackMarquee && stackMarqueeTrack) {
+  let marqueeOffset = 0;
+  let marqueeLast = null;
+  let marqueeSequenceWidth = 0;
+  let marqueePaused = false;
+
+  const measureMarquee = () => {
+    marqueeSequenceWidth = Math.max(1, stackMarqueeTrack.scrollWidth / 2);
+    marqueeOffset %= marqueeSequenceWidth;
+    if (prefersReducedMotion) stackMarqueeTrack.style.transform = "translate3d(0, 0, 0)";
+  };
+
+  const tickMarquee = (timestamp) => {
+    if (marqueeLast === null) marqueeLast = timestamp;
+    const delta = Math.min(64, timestamp - marqueeLast) / 1000;
+    marqueeLast = timestamp;
+
+    if (!prefersReducedMotion && !marqueePaused && marqueeSequenceWidth > 1) {
+      marqueeOffset = (marqueeOffset + 58 * delta) % marqueeSequenceWidth;
+      stackMarqueeTrack.style.transform = `translate3d(${-marqueeOffset}px, 0, 0)`;
+    }
+    window.requestAnimationFrame(tickMarquee);
+  };
+
+  stackMarquee.addEventListener("mouseenter", () => { marqueePaused = true; });
+  stackMarquee.addEventListener("mouseleave", () => { marqueePaused = false; });
+  stackMarquee.addEventListener("touchstart", () => { marqueePaused = true; }, { passive: true });
+  stackMarquee.addEventListener("touchend", () => { marqueePaused = false; }, { passive: true });
+  window.addEventListener("resize", measureMarquee);
+  window.requestAnimationFrame(() => {
+    measureMarquee();
+    window.requestAnimationFrame(tickMarquee);
+  });
+}
+
 const copyButtons = [...document.querySelectorAll(".copy-email")];
 const copyEmailToClipboard = async (email) => {
   try {
