@@ -126,6 +126,21 @@ h1 em, .closing h2 em { color: var(--blue); font-style: normal; }
 .proof-detail div { display: grid; grid-template-columns: 42px 1fr; gap: 12px; }
 .proof-detail b { color: var(--blue); font-family: var(--font-mono); font-size: 10px; font-weight: 500; }
 
+.awards-section { padding-top: 108px; }
+.awards-grid { display: grid; grid-template-columns: minmax(280px, 0.72fr) minmax(0, 1.28fr); gap: 18px; }
+.award-feature, .award-list { border-radius: var(--radius-lg); }
+.award-feature { display: grid; align-content: center; min-height: 278px; padding: 30px; background: linear-gradient(135deg, rgba(227, 49, 47, 0.16), rgba(255, 255, 255, 0.045)); }
+.award-label { color: var(--blue); font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; }
+.award-feature strong { margin-top: 22px; color: var(--ink); font-size: clamp(32px, 4vw, 50px); letter-spacing: -0.07em; line-height: 1; }
+.award-feature p { max-width: 360px; margin: 20px 0 0; color: var(--muted); font-size: 14px; line-height: 1.75; }
+.award-list { display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; }
+.award-item { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 8px 12px; align-content: center; min-height: 138px; padding: 20px 22px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(255, 255, 255, 0.035); }
+.award-item:nth-child(2n) { border-right: 0; }
+.award-item:nth-last-child(-n + 2) { border-bottom: 0; }
+.award-item > span { grid-row: span 2; color: var(--blue); font-family: var(--font-mono); font-size: 10px; }
+.award-item strong { font-size: 15px; letter-spacing: -0.03em; }
+.award-item em { color: var(--muted); font-family: var(--font-mono); font-size: 11px; font-style: normal; }
+
 .content-section { padding-top: 130px; }
 .section-heading { display: block; margin-bottom: 50px; }
 .section-heading h2, .stack-intro h2, .closing h2 { margin: 0; font-size: clamp(36px, 5vw, 58px); font-weight: 700; letter-spacing: -0.075em; line-height: 1.03; }
@@ -140,6 +155,9 @@ h1 em, .closing h2 em { color: var(--blue); font-style: normal; }
 .project-index { padding-top: 5px; color: var(--blue); font-family: var(--font-mono); font-size: 12px; }
 .project-topline { display: flex; justify-content: space-between; gap: 16px; color: var(--muted); font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.04em; text-transform: uppercase; }
 .project-status { color: var(--blue); }
+.project-topline-right { display: inline-flex; align-items: center; gap: 16px; }
+.project-link { color: var(--ink); font-size: 10px; letter-spacing: 0.02em; text-transform: none; transition: color 180ms ease; }
+.project-link:hover { color: var(--blue); }
 .project-main h3 { margin: 13px 0 8px; font-size: 27px; letter-spacing: -0.055em; line-height: 1.15; }
 .project-lead { max-width: 600px; margin: 0; color: var(--muted); font-size: 15px; }
 .project-details { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; max-width: 680px; margin-top: 26px; }
@@ -239,6 +257,8 @@ h1 em, .closing h2 em { color: var(--blue); font-style: normal; }
   .content-section { padding-top: 100px; }
   .stack-section, .closing { grid-template-columns: 1fr; gap: 30px; }
   .section-heading { margin-bottom: 35px; }
+  .awards-grid { grid-template-columns: 1fr; }
+  .award-feature { min-height: 220px; }
   .section-note { max-width: 440px; }
   .project-row { grid-template-columns: 32px minmax(0, 1fr); gap: 15px; }
   .project-art { grid-column: 2; min-height: 180px; }
@@ -262,10 +282,15 @@ h1 em, .closing h2 em { color: var(--blue); font-style: normal; }
   .button { min-height: 42px; }
   .proof-bar { padding: 22px; }
   .project-topline { display: grid; gap: 4px; }
+  .project-topline-right { justify-content: space-between; }
   .project-main h3 { font-size: 23px; }
   .project-art { grid-column: 1 / -1; margin-top: 5px; }
   .project-index { grid-column: 1; }
   .stack-grid { grid-template-columns: 1fr; }
+  .award-list { grid-template-columns: 1fr; }
+  .award-item, .award-item:nth-child(2n) { border-right: 0; }
+  .award-item:nth-last-child(-n + 2) { border-bottom: 1px solid var(--line); }
+  .award-item:last-child { border-bottom: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
